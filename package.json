@@ -1,0 +1,7 @@
+{
+  "name": "vivarium",
+  "version": "1.0.0",
+  "description": "A self-evolving world of neural creatures that writes its own history.",
+  "type": "module",
+  "private": true
+}

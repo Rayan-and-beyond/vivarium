@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vivarium — a world that writes its own history</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header id="topbar">
+    <div class="brand">VIVARIUM<em>a world that writes its own history</em></div>
+    <div id="hud">
+      <span>DAY <b id="hud-day">0</b></span>
+      <span>POP <b id="hud-pop">0</b></span>
+      <span>SPECIES <b id="hud-species">0</b></span>
+      <span>FOOD <b id="hud-food">0</b></span>
+      <span>BIRTHS <b id="hud-gen">0</b></span>
+      <span id="hud-season">☀ spring</span>
+      <span>FPS <b id="hud-fps">0</b></span>
+      <span class="spd"><b id="hud-speed">2×</b></span>
+    </div>
+    <div id="controls">
+      <button id="btn-play"></button>
+      <button id="btn-step" title="Advance one tick (when paused)">⏭ Step</button>
+      <label class="ctl">speed <input type="range" id="speed" /><span id="speed-label"></span></label>
+      <button id="btn-follow" title="Follow selected (press f)">⊕ Follow</button>
+      <input id="seed" placeholder="seed #" />
+      <button id="btn-reset">↻ New World</button>
+      <button id="btn-save">⭳ Save</button>
+      <label class="filebtn">⭱ Load<input type="file" id="file-load" accept="application/json" /></label>
+    </div>
+  </header>
+
+  <div id="toolbar">
+    <div class="layers">
+      <span class="grp-label">layers</span>
+      <label><input type="checkbox" id="layer-pheromone" />scent</label>
+      <label><input type="checkbox" id="layer-biomes" />biomes</label>
+      <label><input type="checkbox" id="layer-vision" />vision</label>
+      <label><input type="checkbox" id="layer-names" />names</label>
+    </div>
+    <div class="tools">
+      <span class="grp-label">intervene</span>
+      <button data-tool="observe">👁 observe</button>
+      <button data-tool="meteor">☄ meteor</button>
+      <button data-tool="bloom">✿ bloom</button>
+      <button data-tool="drought">☀ drought</button>
+      <button data-tool="spawn">✦ spawn</button>
+    </div>
+  </div>
+
+  <main id="stage">
+    <canvas id="world"></canvas>
+    <div id="hint">drag to pan · scroll to zoom · click a creature to study it</div>
+  </main>
+
+  <aside id="sidebar">
+    <div id="tabs">
+      <button data-tab="chronicle" class="on">Chronicle</button>
+      <button data-tab="charts">Charts</button>
+      <button data-tab="phylo">Tree of Life</button>
+      <button data-tab="inspector">Inspector</button>
+    </div>
+    <div id="panels">
+      <div id="panel-chronicle" class="panel active"><div id="chronicle"></div></div>
+      <div id="panel-charts" class="panel"><canvas id="charts"></canvas></div>
+      <div id="panel-phylo" class="panel"><canvas id="phylo"></canvas></div>
+      <div id="panel-inspector" class="panel"><div id="inspector"></div></div>
+    </div>
+  </aside>
+
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>

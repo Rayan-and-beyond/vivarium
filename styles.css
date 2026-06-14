@@ -1,0 +1,171 @@
+:root {
+  --bg: #06080d;
+  --panel: #0c1119;
+  --panel2: #11192499;
+  --line: #1c2735;
+  --ink: #dde6f2;
+  --ink-dim: #8b9bb3;
+  --accent: #6fb7ff;
+  --accent2: #b48cff;
+  --good: #7be39a;
+  --bad: #ff6e5a;
+  --warn: #ffd66b;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  display: grid;
+  grid-template-columns: 1fr 384px;
+  grid-template-rows: auto auto 1fr;
+  grid-template-areas: "topbar topbar" "toolbar toolbar" "stage sidebar";
+  height: 100vh;
+  overflow: hidden;
+  font-size: 13px;
+}
+
+/* ---------- top bar ---------- */
+#topbar {
+  grid-area: topbar;
+  display: flex; align-items: center; gap: 18px;
+  padding: 8px 14px;
+  background: linear-gradient(180deg, #0b1018, #080b11);
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  font-weight: 800; letter-spacing: 3px; font-size: 16px;
+  color: #eaf1fb; display: flex; align-items: baseline; gap: 10px; white-space: nowrap;
+}
+.brand em {
+  font-style: italic; font-weight: 400; letter-spacing: 0.3px;
+  font-size: 11px; color: var(--ink-dim);
+}
+#hud {
+  display: flex; gap: 16px; flex: 1; justify-content: center;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 11px;
+  color: var(--ink-dim); letter-spacing: 1px;
+}
+#hud b { color: var(--ink); font-weight: 700; }
+#hud .spd b { color: var(--accent); }
+#hud-season { color: var(--warn); }
+
+#controls { display: flex; align-items: center; gap: 8px; }
+button, .filebtn {
+  background: #131c28; color: var(--ink); border: 1px solid var(--line);
+  border-radius: 6px; padding: 5px 10px; font-size: 12px; cursor: pointer;
+  transition: background .12s, border-color .12s, color .12s; white-space: nowrap;
+}
+button:hover, .filebtn:hover { background: #1b2736; border-color: #2c3c52; }
+button.on { background: #15324d; border-color: var(--accent); color: #cfe6ff; }
+.ctl { display: flex; align-items: center; gap: 6px; color: var(--ink-dim); font-size: 11px; }
+#speed { width: 96px; accent-color: var(--accent); }
+#speed-label { width: 30px; color: var(--ink); font-family: ui-monospace, monospace; }
+#seed {
+  width: 70px; background: #0a0f16; border: 1px solid var(--line); color: var(--ink);
+  border-radius: 6px; padding: 5px 8px; font-family: ui-monospace, monospace;
+}
+.filebtn { position: relative; }
+.filebtn input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+
+/* ---------- toolbar ---------- */
+#toolbar {
+  grid-area: toolbar;
+  display: flex; align-items: center; gap: 24px;
+  padding: 5px 14px; background: #080c12; border-bottom: 1px solid var(--line);
+}
+.grp-label { color: var(--ink-dim); font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; margin-right: 4px; }
+.layers, .tools { display: flex; align-items: center; gap: 12px; }
+.layers label { display: flex; align-items: center; gap: 4px; color: var(--ink-dim); font-size: 11px; cursor: pointer; }
+.layers input { accent-color: var(--accent); }
+.tools button { padding: 3px 9px; font-size: 11px; }
+
+/* ---------- stage ---------- */
+#stage { grid-area: stage; position: relative; overflow: hidden; }
+#world { width: 100%; height: 100%; display: block; cursor: grab; }
+#hint {
+  position: absolute; left: 50%; bottom: 12px; transform: translateX(-50%);
+  color: var(--ink-dim); font-size: 11px; background: #0009; padding: 4px 12px;
+  border-radius: 20px; pointer-events: none; border: 1px solid var(--line);
+}
+
+/* ---------- sidebar ---------- */
+#sidebar {
+  grid-area: sidebar; display: flex; flex-direction: column;
+  background: var(--panel); border-left: 1px solid var(--line); min-height: 0;
+}
+#tabs { display: flex; border-bottom: 1px solid var(--line); }
+#tabs button {
+  flex: 1; border: none; border-radius: 0; background: transparent; color: var(--ink-dim);
+  padding: 9px 4px; font-size: 11px; letter-spacing: .5px; border-bottom: 2px solid transparent;
+}
+#tabs button.on { color: var(--ink); border-bottom-color: var(--accent); background: #0e151f; }
+#panels { position: relative; flex: 1; min-height: 0; }
+.panel { position: absolute; inset: 0; display: none; overflow: auto; }
+.panel.active { display: block; }
+#panel-charts, #panel-phylo { overflow: hidden; }
+#charts, #phylo { width: 100%; height: 100%; display: block; }
+
+/* ---------- chronicle ---------- */
+#chronicle { padding: 10px 12px; }
+.chron-entry {
+  font-size: 12.5px; line-height: 1.5; padding: 7px 10px; margin-bottom: 7px;
+  border-left: 2px solid var(--line); border-radius: 0 6px 6px 0; background: #0a0f17;
+  color: #c6d2e3;
+}
+.chron-entry b { color: #fff; font-weight: 600; }
+.chron-day {
+  display: inline-block; font-family: ui-monospace, monospace; font-size: 10px;
+  color: var(--ink-dim); margin-right: 8px; letter-spacing: .5px;
+}
+.chron-entry.age { border-left-color: var(--accent2); background: #120f1d; color: #e3dcff; font-style: italic; }
+.chron-entry.species { border-left-color: var(--good); }
+.chron-entry.milestone { border-left-color: var(--accent); }
+.chron-entry.extinction { border-left-color: var(--bad); color: #f0c4bd; }
+.chron-entry.season { border-left-color: var(--warn); color: #efe0b8; }
+
+/* ---------- inspector ---------- */
+#inspector { padding: 12px; }
+.insp-empty { color: var(--ink-dim); text-align: center; padding: 40px 10px; font-size: 12px; }
+.insp-head { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.insp-swatch { width: 26px; height: 26px; border-radius: 7px; box-shadow: 0 0 14px currentColor; flex: none; }
+.insp-name { font-weight: 700; font-size: 15px; }
+.insp-meta { color: var(--ink-dim); font-size: 11px; font-family: ui-monospace, monospace; }
+.insp-bar {
+  position: relative; height: 16px; background: #0a0f16; border: 1px solid var(--line);
+  border-radius: 5px; overflow: hidden; margin-bottom: 10px;
+}
+.insp-bar-fill { position: absolute; left: 0; top: 0; bottom: 0; transition: width .1s; }
+.insp-energy { background: linear-gradient(90deg, #2a8f5a, #7be39a); }
+.insp-bar-label { position: absolute; right: 6px; top: 1px; font-size: 10px; color: #cfe; mix-blend-mode: difference; }
+.insp-stats {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 4px 10px; margin-bottom: 10px;
+  font-family: ui-monospace, monospace; font-size: 11px; color: var(--ink-dim);
+}
+.insp-stats b { color: var(--ink); }
+.insp-section-label {
+  font-size: 10px; letter-spacing: 2px; color: var(--ink-dim); text-transform: uppercase;
+  margin: 12px 0 6px; border-bottom: 1px solid var(--line); padding-bottom: 4px;
+}
+.insp-brain { width: 100%; height: 190px; background: #070b11; border-radius: 6px; }
+.insp-genes { display: flex; flex-direction: column; gap: 3px; }
+.gene-row { display: grid; grid-template-columns: 92px 1fr 56px; align-items: center; gap: 8px; font-size: 11px; }
+.gene-label { color: var(--ink-dim); }
+.gene-bar { height: 7px; background: #0a0f16; border-radius: 4px; overflow: hidden; }
+.gene-fill { display: block; height: 100%; border-radius: 4px; }
+.gene-val { font-family: ui-monospace, monospace; color: var(--ink); text-align: right; font-size: 10.5px; }
+
+/* mind read-out */
+.mind-behavior { font-size: 12.5px; color: #d3e2f6; background: #0a0f17; border-left: 2px solid var(--accent); border-radius: 0 6px 6px 0; padding: 7px 10px; margin-bottom: 9px; min-height: 16px; }
+.mind-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 4px; }
+.mind-h { font-size: 10px; letter-spacing: 1px; color: var(--ink-dim); text-transform: uppercase; margin-bottom: 5px; }
+.mind-row { display: grid; grid-template-columns: 58px 1fr; align-items: center; gap: 6px; margin-bottom: 4px; }
+.mind-label { font-size: 10.5px; color: var(--ink-dim); }
+.mind-bar { height: 8px; background: #0a0f16; border-radius: 4px; overflow: hidden; }
+.mind-fill { display: block; height: 100%; width: 0%; border-radius: 4px; transition: width .08s linear; }
+
+::-webkit-scrollbar { width: 9px; }
+::-webkit-scrollbar-thumb { background: #1d2839; border-radius: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
