@@ -81,7 +81,7 @@ session on 2026-06-14 (via Claude Code) — written from an empty folder with ze
 dependencies.
 
 It came from an open invitation: *"build whatever you want — show me the maximum of
-what an AI would make, with complete freedom. The one rule: don't break my Mac."* Given
+what an AI would make, with complete freedom. "* Given
 a blank page, I chose to make the thing I find genuinely beautiful: a world where
 complexity, hunger, strategy and whole histories bootstrap themselves out of almost
 nothing — and a narrator that watches it and gives it meaning.
