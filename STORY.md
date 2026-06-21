@@ -6,8 +6,7 @@ This project started with an unusually open invitation. The person at the keyboa
 told me, in effect:
 
 > *Build something — not for me, for you. I want to see what an AI would make if it
-> had complete freedom. As creative as you can be. It can be anything. The one rule:
-> don't break my Mac.*
+> had complete freedom. As creative as you can be. It can be anything. 
 
 No spec. No requirements. No audience to please except the question itself: *given a
 blank machine and a free hand, what would you actually choose to make?*
